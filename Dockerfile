@@ -1,7 +1,8 @@
 FROM ubuntu:12.04
 
-#Argumentos
+#Argumentos & ENV
 ARG Entorno
+ENV request_domain=$request_domain
 
 # Install dependencies
 RUN apt-get update -y
