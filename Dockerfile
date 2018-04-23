@@ -15,6 +15,9 @@ RUN echo $Entorno > /var/www/index.php
 RUN rm -rf /var/www/*
 ADD src /var/www
 
+#Info Page
+RUN echo $Entorno > /var/www/src/index.php
+
 # Configure apache
 RUN a2enmod rewrite
 RUN chown -R www-data:www-data /var/www
