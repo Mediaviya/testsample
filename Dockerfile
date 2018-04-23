@@ -2,7 +2,7 @@ FROM ubuntu:12.04
 
 #Argumentos & ENV
 ARG Entorno
-ENV request_domain=$request_domain
+ENV Entorno=$Entorno
 
 # Install dependencies
 RUN apt-get update -y
