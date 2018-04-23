@@ -16,7 +16,7 @@ RUN rm -rf /var/www/*
 ADD src /var/www
 
 #Info Page
-RUN echo $Entorno > /var/www/src/index.php
+RUN echo $Entorno > /var/www/info.php
 
 # Configure apache
 RUN a2enmod rewrite
