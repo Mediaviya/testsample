@@ -8,6 +8,9 @@ ENV Entorno=$Entorno
 RUN apt-get update -y
 RUN apt-get install -y git curl apache2 php5 libapache2-mod-php5 php5-mcrypt php5-mysql
 
+#Info Page
+RUN echo $Entorno > /var/www/info.html
+
 # Install app
 RUN rm -rf /var/www/*
 ADD src /var/www
