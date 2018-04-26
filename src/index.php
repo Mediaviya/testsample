@@ -18,16 +18,8 @@
                 <h1>Simple PHP App</h1>
                 <h2>Congratulations</h2>
                 <p>Your PHP application is now running on a container in Amazon ECS.</p>
-                <p>Your PHP application is now running on a container in Amazon ECS.</p>
-                <table>
-  <thead><tr><td>Variable</td><td>Value</td></tr></thead>
-  <tbody>
-    <% ENV.each do |k,v| %>
-      <tr><td><%= k %></td><td><%= v %></td></tr>
-    <% end %>
-  </tbody>
-</table>
-                <p>The container is running PHP - Nueva version <?php echo phpversion(); ?>.</p>
+
+                <p>The container is running PHP - Nueva version 2604 <?php echo phpversion(); ?>.</p>
                 <?php
                         $myfile = fopen("/var/www/my-vol/date", "r") or die("");
                         echo fread($myfile,filesize("/var/www/my-vol/date"));
