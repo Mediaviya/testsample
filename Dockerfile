@@ -1,8 +1,8 @@
 FROM ubuntu:12.04
 
 #Argumentos & ENV
-ARG Entorno
-ENV Entorno=$Entorno
+#ARG Entorno
+#ENV Entorno=$Entorno
 
 # Install dependencies
 RUN apt-get update -y
@@ -13,7 +13,7 @@ RUN rm -rf /var/www/*
 ADD src /var/www
 
 #Info Page
-RUN echo $Entorno > /var/www/info.php
+#RUN echo $Entorno > /var/www/info.php
 
 # Configure apache
 RUN a2enmod rewrite
