@@ -11,6 +11,9 @@ RUN yum -y --setopt=tsflags=nodocs update && \
 
 EXPOSE 80
 
+#Install AWS CLI
+RUN yum -y install aws-cli
+
 #Copy Web App
 ADD src/index.php /var/www/html
 
