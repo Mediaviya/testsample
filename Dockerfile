@@ -9,12 +9,22 @@ RUN apt-get update -y
 RUN apt-get install -y git curl apache2 php5 libapache2-mod-php5 php5-mcrypt php5-mysql
 
 #Install AWS CLI
-RUN apk-install python3 openssl groff && \
-  wget -O /tmp/awscli-bundle.zip https://s3.amazonaws.com/aws-cli/awscli-bundle.zip && \
-  unzip -d /tmp/ /tmp/awscli-bundle.zip && \
-  python3 /tmp/awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws && \
-  rm -f /tmp/awscli-bundle.zip && \
-  rm -rf /tmp/awscli-bundle
+RUN apt-get install -y \
+    python \
+    python-pip \
+    python-virtualenv
+    
+RUN adduser --disabled-login --gecos '' aws
+WORKDIR /home/aws
+
+USER aws
+
+RUN \
+    mkdir aws && \
+    virtualenv aws/env && \
+    ./aws/env/bin/pip install awscli && \
+    echo 'source $HOME/aws/env/bin/activate' >> .bashrc && \
+    echo 'complete -C aws_completer aws' >> .bashrc
 
 # Install app
 RUN rm -rf /var/www/*
