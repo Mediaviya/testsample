@@ -14,7 +14,7 @@ EXPOSE 80
 #Install AWS CLI
 RUN curl -O https://bootstrap.pypa.io/get-pip.py
 RUN python get-pip.py --user
-RUN pip install awscli --upgrade --user
+RUN /root/.local/bin/pip install awscli --upgrade --user
 
 #Copy Web App
 ADD src/index.php /var/www/html
