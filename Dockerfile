@@ -12,10 +12,13 @@ RUN yum -y --setopt=tsflags=nodocs update && \
 EXPOSE 80
 
 #Copy Web App
-ADD src /var/www/html
+ADD src/index.php /var/www/html
 
 # Simple startup script to avoid some issues observed with container restart
 ADD run-httpd.sh /usr/local/bin/
+ADD src/entrypoint.sh /usr/local/bin/
 RUN chmod -v +x /usr/local/bin/run-httpd.sh
+RUN chmod -v +x /usr/local/bin/entrypoint.sh
 
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 CMD ["/usr/local/bin/run-httpd.sh"]
