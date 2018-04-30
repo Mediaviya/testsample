@@ -6,8 +6,15 @@ FROM ubuntu:12.04
 
 # Install dependencies
 RUN apt-get update -y
-RUN apt-get install -y git curl apache2 php5 libapache2-mod-php5 php5-mcrypt php5-mysql python-pip groff-base
-RUN pip install awscli
+RUN apt-get install -y git curl apache2 php5 libapache2-mod-php5 php5-mcrypt php5-mysql
+
+#Install AWS CLI
+RUN apk-install python3 openssl groff && \
+  wget -O /tmp/awscli-bundle.zip https://s3.amazonaws.com/aws-cli/awscli-bundle.zip && \
+  unzip -d /tmp/ /tmp/awscli-bundle.zip && \
+  python3 /tmp/awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws && \
+  rm -f /tmp/awscli-bundle.zip && \
+  rm -rf /tmp/awscli-bundle
 
 # Install app
 RUN rm -rf /var/www/*
