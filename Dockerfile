@@ -12,7 +12,9 @@ RUN yum -y --setopt=tsflags=nodocs update && \
 EXPOSE 80
 
 #Install AWS CLI
-RUN yum -y install aws-cli
+RUN curl -O https://bootstrap.pypa.io/get-pip.py
+RUN python get-pip.py --user
+RUN pip install awscli --upgrade --user
 
 #Copy Web App
 ADD src/index.php /var/www/html
