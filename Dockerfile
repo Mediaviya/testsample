@@ -12,7 +12,7 @@ RUN yum -y --setopt=tsflags=nodocs update && \
 EXPOSE 80
 
 # Simple startup script to avoid some issues observed with container restart
-ADD run-httpd.sh /run-httpd.sh
-RUN chmod -v +x /run-httpd.sh
+ADD run-httpd.sh /usr/local/bin/
+RUN chmod -v +x /usr/local/bin/run-httpd.sh
 
-CMD ["/run-httpd.sh"]
+CMD ["/usr/local/bin/run-httpd.sh"]
