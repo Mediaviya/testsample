@@ -4,4 +4,4 @@ Entorno=$(aws ssm get-parameters --names $(echo $TYPE).Entorno --no-with-decrypt
 
 echo $Entorno > /var/www/info.php
 
-/usr/sbin/apache2 -D FOREGROUND
+/usr/sbin/apache2 -DFOREGROUND
