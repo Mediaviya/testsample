@@ -11,6 +11,7 @@ RUN apt-get install -y git curl apache2 php5 libapache2-mod-php5 php5-mcrypt php
 # Install app
 RUN rm -rf /var/www/*
 ADD src /var/www
+RUN chmod 777 /var/www/entrypoint.sh
 
 #Info Page
 #RUN echo $Entorno > /var/www/info.php
