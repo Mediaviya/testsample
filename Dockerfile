@@ -9,22 +9,11 @@ RUN apt-get update -y
 RUN apt-get install -y git curl apache2 php5 libapache2-mod-php5 php5-mcrypt php5-mysql
 
 #Install AWS CLI
-RUN apt-get install -y \
-    python \
-    python-pip \
-    python-virtualenv
+RUN apt-get install -y python2.7
     
-RUN adduser --disabled-login --gecos '' aws
-WORKDIR /home/aws
+RUN python2.7 get-pip.py
 
-USER aws
-
-RUN \
-    mkdir aws && \
-    virtualenv aws/env && \
-    ./aws/env/bin/pip install awscli && \
-    echo 'source $HOME/aws/env/bin/activate' >> .bashrc && \
-    echo 'complete -C aws_completer aws' >> .bashrc
+RUN pip install awscli
 
 # Install app
 RUN rm -rf /var/www/*
