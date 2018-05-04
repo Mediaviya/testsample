@@ -19,7 +19,7 @@
                 <h2>Congratulations</h2>
                 <p>Your PHP application is now running on a container in Amazon ECS.</p>
 
-                <p>The container is running PHP On Apache WebServer Version 04May-v4 <?php echo phpversion(); ?>.</p>
+                <p>The container is running PHP On Apache WebServer Version 04May-v5 PRO SWAP <?php echo phpversion(); ?>.</p>
 #                <?php
 #                        $myfile = fopen("/var/www/my-vol/date", "r") or die("");
 #                        echo fread($myfile,filesize("/var/www/my-vol/date"));
