@@ -20,10 +20,10 @@ RUN /root/.local/bin/pip install awscli --upgrade --user
 ADD src/index.php /var/www/html
 
 # Simple startup script to avoid some issues observed with container restart
-ADD run-httpd.sh /usr/local/bin/
+#ADD run-httpd.sh /usr/local/bin/
 ADD src/entrypoint.sh /usr/local/bin/
-RUN chmod -v +x /usr/local/bin/run-httpd.sh
+#RUN chmod -v +x /usr/local/bin/run-httpd.sh
 RUN chmod -v +x /usr/local/bin/entrypoint.sh
 
-ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
-CMD ["/usr/local/bin/run-httpd.sh"]
+ENTRYPOINT ["/bin/sh"]
+CMD ["/usr/local/bin/entrypoint.sh"]
